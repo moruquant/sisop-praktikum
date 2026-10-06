@@ -9,10 +9,7 @@
 | **Program Studi** | S1 Informatika |
 | **Fakultas** | Fakultas Informatika |
 | **Universitas** | Universitas Telkom |
-| **Koordinator** | Febri Dawani, S.T., M.T. |
-| **NIP** | 20850005 |
-| **Durasi** | 16 pertemuan × 100 menit (2 jam) |
-| **Lokasi** | Gedung TULT (Telkom University Landmark Tower) Lantai 6 dan 7 |
+
 
 ## Deskripsi
 
