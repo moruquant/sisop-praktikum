@@ -7,8 +7,7 @@
 | **Nama** | [Moreno Maheswara Anggoro] |
 | **NIM** | [108072500044] |
 | **Kelas** | [IF-05-04] |
-| **Asisten Praktikum** | [Nama Asisten] |
-| **Tanggal Praktikum** | [Tanggal Praktikum] |
+
 
 ---
 
