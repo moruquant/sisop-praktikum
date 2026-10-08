@@ -50,11 +50,8 @@ Setelah berhasil login, kami masuk ke direktori tempat source code Xinu disimpan
 
 ```bash
 $ cd xinu/compile
-  ![Gamabar terminal ](assets/photos1.png)
 $ make clean
-  ![Gamabar terminal make clean ](assets/photos2.png)
 $ make
-![Gamabar terminal make ](assets/photos3.png)
 ```
 
 Dari hasil proses tersebut, saya melihat bahwa source code Xinu berhasil dikompilasi menjadi image `xinu.elf`. Selain itu, file image tersebut secara otomatis dipindahkan ke direktori TFTP di `/srv/tftp/xinu.boot` agar dapat diakses oleh Backend VM saat proses booting dilakukan.
