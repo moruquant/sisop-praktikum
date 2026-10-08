@@ -44,27 +44,27 @@ Langkah pertama yang kami lakukan adalah masuk ke Development-System VM. Setelah
 - **Username:** `xinu`
 - **Password:** `xinurocks`
 
-  ![Gamabar halam login ](assets/Screenshot 2026-10-02 073730.png)
+  ![Gamabar halam login ](assets/foto2.png)
 
 Setelah berhasil login, kami masuk ke direktori tempat source code Xinu disimpan dan membersihkan hasil build sebelumnya agar proses kompilasi yang dilakukan menjadi lebih fresh dan akurat. Perintah yang digunakan adalah:
 
 ```bash
 $ cd xinu/compile
-  ![Gamabar terminal ](assets/Screenshot 2026-10-02 074206.png)
+  ![Gamabar terminal ](assets/photos1.png)
 $ make clean
-  ![Gamabar terminal make clean ](assets/Screenshot 2026-10-02 074413.png)
+  ![Gamabar terminal make clean ](assets/photos2.png)
 $ make
-![Gamabar terminal make ](assets/Screenshot 2026-10-02 074450.png)
+![Gamabar terminal make ](assets/photos3.png)
 ```
 
-Dari hasil proses tersebut, kami melihat bahwa source code Xinu berhasil dikompilasi menjadi image `xinu.elf`. Selain itu, file image tersebut secara otomatis dipindahkan ke direktori TFTP di `/srv/tftp/xinu.boot` agar dapat diakses oleh Backend VM saat proses booting dilakukan.
+Dari hasil proses tersebut, saya melihat bahwa source code Xinu berhasil dikompilasi menjadi image `xinu.elf`. Selain itu, file image tersebut secara otomatis dipindahkan ke direktori TFTP di `/srv/tftp/xinu.boot` agar dapat diakses oleh Backend VM saat proses booting dilakukan.
 
-![Gamabar terminal make ](assets/Screenshot 2026-10-02 074450.png)
+![Gamabar terminal make ](assets/photos3.png)
 
 *Gambar 1: Proses kompilasi source code Xinu melalui perintah `make` pada Development-System VM.*
 
 ### 3.2 Booting Backend VM via PXE
-Setelah kompilasi selesai, kami menjalankan Backend VM. Karena mesin target tidak memiliki sistem operasi yang tersimpan di hard disk, maka proses booting dilakukan secara jaringan. Proses tersebut mengikuti mekanisme PXE dan TFTP.
+Setelah kompilasi selesai, saya menjalankan Backend VM. Karena mesin target tidak memiliki sistem operasi yang tersimpan di hard disk, maka proses booting dilakukan secara jaringan. Proses tersebut mengikuti mekanisme PXE dan TFTP.
 
 Urutan prosesnya adalah:
 1. Backend VM menampilkan bootloader GRUB.
@@ -74,12 +74,12 @@ Urutan prosesnya adalah:
 
 Dari proses ini, kami dapat melihat bahwa Xinu tidak memerlukan media penyimpanan lokal untuk dijalankan dalam mode target, melainkan memanfaatkan jaringan sebagai media pendistribusian boot image.
 
-![Booting Backend VM](assets/dummy.png)
+![Booting Backend VM](assets/photos5.png)
 
 *Gambar 2: Tampilan Backend VM saat proses booting melalui PXE dan TFTP.*
 
 ### 3.3 Koneksi Serial Port Menggunakan Minicom
-Untuk berinteraksi dengan Xinu yang sedang berjalan, kami kembali ke Development-System VM dan menjalankan aplikasi `minicom`. Aplikasi ini berperan sebagai terminal komunikasi serial yang terhubung ke mesin target.
+Untuk berinteraksi dengan Xinu yang sedang berjalan, saya kembali ke Development-System VM dan menjalankan aplikasi `minicom`. Aplikasi ini berperan sebagai terminal komunikasi serial yang terhubung ke mesin target.
 
 Perintah yang digunakan adalah:
 
@@ -87,29 +87,29 @@ Perintah yang digunakan adalah:
 $ sudo minicom
 ```
 
-Password yang diminta adalah `xinurocks`. Setelah koneksi berhasil dibuat, terminal kami berubah dari tampilan Linux biasa menjadi prompt Xinu dengan tanda `xsh$`. Hal ini menandakan bahwa kami sudah masuk ke shell Xinu dan siap untuk menjalankan perintah.
+Password yang diminta adalah `xinurocks`. Setelah koneksi berhasil dibuat, terminal saya berubah dari tampilan Linux biasa menjadi prompt Xinu dengan tanda `xsh$`. Hal ini menandakan bahwa kami sudah masuk ke shell Xinu dan siap untuk menjalankan perintah.
 
-![Koneksi Minicom](assets/dummy.png)
+![Koneksi Minicom](assets/photos7.png)
 
 *Gambar 3: Koneksi berhasil melalui Minicom dan muncul prompt `xsh$`.*
 
 ### 3.4 Eksplorasi Perintah Shell Xinu
-Setelah masuk ke shell Xinu, kami mulai mengeksplorasi perintah yang tersedia. Salah satu perintah yang kami coba adalah `help` untuk melihat daftar command yang dapat dijalankan pada sistem.
+Setelah masuk ke shell Xinu, saya mulai mengeksplorasi perintah yang tersedia. Salah satu perintah yang saya coba adalah `help` untuk melihat daftar command yang dapat dijalankan pada sistem.
 
 ```bash
 xsh$ help
 ```
 
-Dari hasil eksekusi perintah tersebut, kami melihat bahwa shell Xinu cukup sederhana namun tetap memiliki fungsi dasar yang penting. Selain itu, kami juga mencoba beberapa perintah seperti `ls` dan `cd` untuk melihat struktur file dan navigasi direktori pada sistem. Aktivitas ini membantu kami memahami bahwa Xinu memang dirancang untuk lingkungan embedded dengan antarmuka yang lebih minimal dibandingkan sistem operasi desktop.
+Dari hasil eksekusi perintah tersebut, saya melihat bahwa shell Xinu cukup sederhana namun tetap memiliki fungsi dasar yang penting. Selain itu, saya juga mencoba beberapa perintah seperti `ls` dan `cd` untuk melihat struktur file dan navigasi direktori pada sistem. Aktivitas ini membantu kami memahami bahwa Xinu memang dirancang untuk lingkungan embedded dengan antarmuka yang lebih minimal dibandingkan sistem operasi desktop.
 
-![Perintah Help Xinu](assets/dummy.png)
+![Koneksi Minicom](assets/photos7.png)
 
 *Gambar 4: Hasil dari perintah `help` pada shell Xinu.*
 
 ---
 
 ## 4. Pembahasan
-Dari praktikum yang telah kami lakukan, ada beberapa hal penting yang dapat kami pahami mengenai Xinu dan cara kerjanya.
+Dari praktikum yang telah saya lakukan, ada beberapa hal penting yang dapat saya pahami mengenai Xinu dan cara kerjanya.
 
 Pertama, penggunaan dua VM dalam praktikum ini sangat mencerminkan prinsip cross-development yang umum digunakan pada sistem embedded. Proses kompilasi dan pengembangan dilakukan di mesin host, sementara target eksekusi dibuat di mesin lain. Cara ini sangat efisien karena pengembang tidak harus menulis dan menjalankan program langsung di perangkat target yang mungkin memiliki keterbatasan sumber daya.
 
@@ -119,18 +119,18 @@ Ketiga, penggunaan Minicom sebagai terminal serial sangat penting dalam komunika
 
 Keempat, shell Xinu yang muncul sebagai `xsh$` menunjukkan bahwa sistem operasi ini memang menyediakan antarmuka sederhana untuk menjalankan perintah dasar. Meskipun terlihat minimalis, shell tersebut sudah cukup untuk menjalankan beberapa tugas dasar seperti melihat daftar perintah, mengeksplorasi direktori, dan mengendalikan sistem secara sederhana.
 
-Secara umum, praktikum ini memberi kami pemahaman bahwa sistem operasi embedded seperti Xinu memiliki struktur yang lebih ringan dibandingkan sistem operasi umum, tetapi tetap memiliki mekanisme dasar yang penting untuk pengelolaan sumber daya, eksekusi program, dan interaksi pengguna.
+Secara umum, praktikum ini memberi saya pemahaman bahwa sistem operasi embedded seperti Xinu memiliki struktur yang lebih ringan dibandingkan sistem operasi umum, tetapi tetap memiliki mekanisme dasar yang penting untuk pengelolaan sumber daya, eksekusi program, dan interaksi pengguna.
 
 ---
 
 ## 5. Kesimpulan
-Berdasarkan praktikum yang telah kami lakukan, dapat disimpulkan bahwa Xinu OS merupakan sistem operasi embedded yang dirancang dengan pendekatan yang cukup sederhana namun efektif. Arsitektur cross-development yang menggunakan Development-System VM dan Backend VM memberi gambaran jelas tentang bagaimana pengembangan dan eksekusi sistem embedded dilakukan dalam lingkungan nyata.
+Berdasarkan praktikum yang telah saya lakukan, dapat disimpulkan bahwa Xinu OS merupakan sistem operasi embedded yang dirancang dengan pendekatan yang cukup sederhana namun efektif. Arsitektur cross-development yang menggunakan Development-System VM dan Backend VM memberi gambaran jelas tentang bagaimana pengembangan dan eksekusi sistem embedded dilakukan dalam lingkungan nyata.
 
-Selain itu, kami juga memahami bahwa proses booting melalui PXE dan TFTP sangat membantu dalam menjalankan target tanpa media penyimpanan lokal. Sementara itu, Minicom mempermudah kami untuk berinteraksi dengan shell Xinu melalui serial port, dan akhirnya kami berhasil melihat serta menjalankan beberapa perintah dasar pada sistem tersebut.
+Selain itu, saya juga memahami bahwa proses booting melalui PXE dan TFTP sangat membantu dalam menjalankan target tanpa media penyimpanan lokal. Sementara itu, Minicom mempermudah saya untuk berinteraksi dengan shell Xinu melalui serial port, dan akhirnya saya berhasil melihat serta menjalankan beberapa perintah dasar pada sistem tersebut.
 
-Secara umum, praktikum ini tidak hanya menambah pemahaman teknis tentang Xinu, tetapi juga membantu kami memahami prinsip kerja sistem operasi secara lebih konkret. Hal ini sangat bermanfaat sebagai dasar sebelum mempelajari materi yang lebih kompleks seperti proses, sinkronisasi, dan manajemen memori pada sistem operasi.
+Secara umum, praktikum ini tidak hanya menambah pemahaman teknis tentang Xinu, tetapi juga membantu saya memahami prinsip kerja sistem operasi secara lebih konkret. Hal ini sangat bermanfaat sebagai dasar sebelum mempelajari materi yang lebih kompleks seperti proses, sinkronisasi, dan manajemen memori pada sistem operasi.
 
 ---
 
 **Kesimpulan singkat:**  
-Praktikum ini berhasil memberi kami pengalaman nyata mengenai instalasi, booting, serta eksplorasi sistem operasi Xinu. Kami mendapatkan pemahaman yang lebih jelas mengenai peran VM, serial console, dan shell Xinu dalam arsitektur sistem operasi embedded.
+Praktikum ini berhasil memberi saya pengalaman nyata mengenai instalasi, booting, serta eksplorasi sistem operasi Xinu. Kami mendapatkan pemahaman yang lebih jelas mengenai peran VM, serial console, dan shell Xinu dalam arsitektur sistem operasi embedded.
