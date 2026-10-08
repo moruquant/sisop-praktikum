@@ -44,17 +44,22 @@ Langkah pertama yang kami lakukan adalah masuk ke Development-System VM. Setelah
 - **Username:** `xinu`
 - **Password:** `xinurocks`
 
+  ![Gamabar halam login ](assets/Screenshot 2026-10-02 073730.png)
+
 Setelah berhasil login, kami masuk ke direktori tempat source code Xinu disimpan dan membersihkan hasil build sebelumnya agar proses kompilasi yang dilakukan menjadi lebih fresh dan akurat. Perintah yang digunakan adalah:
 
 ```bash
 $ cd xinu/compile
+  ![Gamabar terminal ](assets/Screenshot 2026-10-02 074206.png)
 $ make clean
+  ![Gamabar terminal make clean ](assets/Screenshot 2026-10-02 074413.png)
 $ make
+![Gamabar terminal make ](assets/Screenshot 2026-10-02 074450.png)
 ```
 
 Dari hasil proses tersebut, kami melihat bahwa source code Xinu berhasil dikompilasi menjadi image `xinu.elf`. Selain itu, file image tersebut secara otomatis dipindahkan ke direktori TFTP di `/srv/tftp/xinu.boot` agar dapat diakses oleh Backend VM saat proses booting dilakukan.
 
-![Terminal Compile Xinu](assets/dummy.png)
+![Gamabar terminal make ](assets/Screenshot 2026-10-02 074450.png)
 
 *Gambar 1: Proses kompilasi source code Xinu melalui perintah `make` pada Development-System VM.*
 
